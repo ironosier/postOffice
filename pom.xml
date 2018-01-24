@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.ironosier</groupId>
+	<artifactId>postOffice</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>postOffice-ear</module>
+		<module>postOffice-ejb</module>
+		<module>postOffice-web</module>
+	</modules>
+
+	<properties>
+		<version.ear.plugin>2.10.1</version.ear.plugin>
+		<version.ejb.plugin>3.0.0</version.ejb.plugin>
+		<version.war.plugin>3.2.0</version.war.plugin>
+
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.ironosier</groupId>
+				<artifactId>postOffice-ejb</artifactId>
+				<version>${project.version}</version>
+				<type>ejb</type>
+			</dependency>
+			<dependency>
+				<groupId>org.ironosier</groupId>
+				<artifactId>postOffice-web</artifactId>
+				<version>${project.version}</version>
+				<type>war</type>
+				<scope>compile</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+</project>
