@@ -16,6 +16,8 @@
 		<version.ear.plugin>2.10.1</version.ear.plugin>
 		<version.ejb.plugin>3.0.0</version.ejb.plugin>
 		<version.war.plugin>3.2.0</version.war.plugin>
+		
+		<version.cdi.api>2.0</version.cdi.api>
 
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
