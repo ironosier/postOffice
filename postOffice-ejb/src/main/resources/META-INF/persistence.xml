@@ -4,7 +4,7 @@
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 	<jta-data-source>java:jboss/datasources/postDS</jta-data-source>
 	
-	<class></class>
+	<class>org.ironosier.postoffice.model.TestTable</class>
 	
 	<properties>
 	<property name="hibernate.hbm2ddl.auto" value="update"/>
