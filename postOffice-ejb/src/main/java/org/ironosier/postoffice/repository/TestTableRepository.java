@@ -14,10 +14,16 @@ public class TestTableRepository {
 
 	@PersistenceContext(name = "postPU")
 	private EntityManager em;
-	
-	public List<TestTable> getList (){
+
+	public List<TestTable> getList() {
 		TypedQuery<TestTable> query = em.createNamedQuery("getAll", TestTable.class);
-		
+
 		return query.getResultList();
+	}
+
+	public TestTable getFirst() {
+		TypedQuery<TestTable> query = em.createNamedQuery("getFirst", TestTable.class);
+		
+		return query.getSingleResult();
 	}
 }
