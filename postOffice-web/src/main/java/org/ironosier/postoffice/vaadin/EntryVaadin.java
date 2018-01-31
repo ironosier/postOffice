@@ -8,6 +8,7 @@ import org.ironosier.postoffice.model.TestTable;
 import org.ironosier.postoffice.service.TestTableService;
 
 import com.vaadin.annotations.Theme;
+import com.vaadin.annotations.Title;
 import com.vaadin.cdi.CDIUI;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.VaadinRequest;
@@ -22,8 +23,8 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
 @SuppressWarnings("serial")
-@Theme("valo")
-@CDIUI("")
+@CDIUI("login")
+@Title("Почта")
 public class EntryVaadin extends UI {
 
 	@Inject
@@ -66,8 +67,7 @@ public class EntryVaadin extends UI {
 		layout.addComponent(panel);
 		layout.setSizeFull();
 		layout.setComponentAlignment(panel, Alignment.MIDDLE_CENTER);
-
-		getPage().setTitle("Почта");
+		
 		setContent(layout);
 
 	}
