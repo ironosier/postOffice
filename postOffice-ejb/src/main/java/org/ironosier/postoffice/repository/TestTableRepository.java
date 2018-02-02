@@ -20,10 +20,4 @@ public class TestTableRepository {
 
 		return query.getResultList();
 	}
-
-	public TestTable getFirst() {
-		TypedQuery<TestTable> query = em.createNamedQuery("getFirst", TestTable.class);
-		
-		return query.getSingleResult();
-	}
 }

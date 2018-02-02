@@ -13,17 +13,15 @@ import javax.persistence.Table;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "test_table")
-@NamedQueries({
-	@NamedQuery(name = "getAll", query = "SELECT t FROM TestTable t"),
-	@NamedQuery(name = "getFirst", query = "SELECT t FROM TestTable t WHERE t.pass = 1")
-})
+@NamedQueries({ @NamedQuery(name = "getAll", query = "SELECT t FROM TestTable t")})
 public class TestTable implements Serializable {
 
 	@Id
 	@GeneratedValue
 	private UUID id;
 	private String name;
-	private int pass;
+	private String pass;
+	private String role;
 
 	public TestTable() {
 	}
@@ -44,11 +42,19 @@ public class TestTable implements Serializable {
 		this.name = name;
 	}
 
-	public int getPass() {
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public String getPass() {
 		return pass;
 	}
 
-	public void setPass(int pass) {
+	public void setPass(String pass) {
 		this.pass = pass;
 	}
 }
