@@ -22,6 +22,15 @@ public class TestTable implements Serializable {
 	private String name;
 	private String pass;
 	private String role;
+	private String rawPass;
+
+	public String getRawPass() {
+		return rawPass;
+	}
+
+	public void setRawPass(String rawPass) {
+		this.rawPass = rawPass;
+	}
 
 	public TestTable() {
 	}

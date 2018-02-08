@@ -19,6 +19,7 @@
 		
 		<version.cdi.api>2.0</version.cdi.api>
 		<version.javaee.api>7.0</version.javaee.api>
+		<version.jbcrypt.api>0.4</version.jbcrypt.api>
 
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>

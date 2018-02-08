@@ -2,6 +2,7 @@ package org.ironosier.postoffice.vaadin;
 
 
 import javax.inject.Inject;
+
 import javax.servlet.ServletException;
 
 import org.ironosier.postoffice.model.TestTable;
@@ -12,6 +13,7 @@ import com.vaadin.cdi.access.JaasAccessControl;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.FormLayout;
@@ -40,16 +42,15 @@ public class LoginVaadin extends VerticalLayout implements View {
 		pass.setIcon(VaadinIcons.PASSWORD);
 
 		Grid<TestTable> grid = new Grid<>();
-		grid.addColumn(TestTable::getId).setCaption("id");
 		grid.addColumn(TestTable::getName).setCaption("name");
+		grid.addColumn(TestTable::getRawPass).setCaption("raw pass");
 		grid.addColumn(TestTable::getPass).setCaption("pass");
 		grid.addColumn(TestTable::getRole).setCaption("role");
 		grid.setItems(service.getList());
 		grid.addItemClickListener(e -> {
 			login.setValue(e.getItem().getName());
-			pass.setValue(e.getItem().getPass());
+			pass.setValue(e.getItem().getRawPass());
 		});
-
 		Label label = new Label("Ведите логин и пароль");
 
 		Button loginButton = new Button("Войти", e -> login(login.getValue(), pass.getValue()));
@@ -70,13 +71,17 @@ public class LoginVaadin extends VerticalLayout implements View {
 		setComponentAlignment(panel, Alignment.MIDDLE_CENTER);
 	}
 
+	@SuppressWarnings("static-access")
+	// i dont like it
 	private void login(String login, String pass) {
 		try {
 			JaasAccessControl.login(login, pass);
+			EntryVaadin ui = (EntryVaadin)getUI().getCurrent();
+			ui.navigateToFirstView(VaadinRequest.getCurrent());
 			Notification.show("Доступ разрешен");
-			getUI().getNavigator().navigateTo("secured");
 		} catch (ServletException e) {
 			Notification.show("Доступ запрещен", Type.ERROR_MESSAGE);
 		}
 	}
+	
 }

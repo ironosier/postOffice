@@ -20,4 +20,8 @@ public class TestTableRepository {
 
 		return query.getResultList();
 	}
+	
+	public void createUser(TestTable table) {
+		em.persist(table);
+	}
 }

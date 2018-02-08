@@ -13,6 +13,7 @@
 		<dependency>
 			<groupId>org.ironosier</groupId>
 			<artifactId>postOffice-ejb</artifactId>
+			<scope>provided</scope>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
@@ -43,7 +44,23 @@
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-cdi</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.mindrot</groupId>
+			<artifactId>jbcrypt</artifactId>
+			<version>${version.jbcrypt.api}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.picketbox</groupId>
+			<artifactId>picketbox</artifactId>
+			<version>5.0.2.Final</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.logging</groupId>
+			<artifactId>jboss-logging</artifactId>
+			<version>3.3.1.Final</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>

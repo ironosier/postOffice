@@ -13,8 +13,12 @@ public class TableService {
 
 	@Inject
 	private TestTableRepository repository;
-	
-	public List<TestTable> getList(){
+
+	public List<TestTable> getList() {
 		return repository.getList();
+	}
+
+	public void createUser(TestTable table) {
+		repository.createUser(table);
 	}
 }
