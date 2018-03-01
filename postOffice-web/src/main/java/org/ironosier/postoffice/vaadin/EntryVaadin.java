@@ -21,7 +21,6 @@ public class EntryVaadin extends UI {
 	@Inject
 	private CDIViewProvider viewProvider;
 
-	private Logger logger = Logger.getLogger(getClass());
 
 	@Override
 	protected void init(VaadinRequest request) {
@@ -47,6 +46,9 @@ public class EntryVaadin extends UI {
 		}
 		if (checkRole("[manager]", request)) {
 			getUI().getNavigator().navigateTo("manager");
+		}
+		if (checkRole("[bars]", request)) {
+			getUI().getNavigator().navigateTo("bars");
 		}
 	}
 
