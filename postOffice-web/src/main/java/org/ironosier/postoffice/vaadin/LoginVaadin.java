@@ -1,6 +1,5 @@
 package org.ironosier.postoffice.vaadin;
 
-
 import javax.inject.Inject;
 
 import javax.servlet.ServletException;
@@ -11,8 +10,10 @@ import org.ironosier.postoffice.service.TableService;
 import com.vaadin.cdi.CDIView;
 import com.vaadin.cdi.access.JaasAccessControl;
 import com.vaadin.icons.VaadinIcons;
+import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.server.Page;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
@@ -32,7 +33,7 @@ public class LoginVaadin extends VerticalLayout implements View {
 
 	@Inject
 	private TableService service;
-	
+
 	@Override
 	public void enter(ViewChangeEvent event) {
 		TextField login = new TextField("Логин");
@@ -72,16 +73,24 @@ public class LoginVaadin extends VerticalLayout implements View {
 	}
 
 	@SuppressWarnings("static-access")
-	// i dont like it
 	private void login(String login, String pass) {
 		try {
 			JaasAccessControl.login(login, pass);
-			EntryVaadin ui = (EntryVaadin)getUI().getCurrent();
+			PostOfficeUI ui = (PostOfficeUI) getUI().getCurrent();
 			ui.navigateToFirstView(VaadinRequest.getCurrent());
 			Notification.show("Доступ разрешен");
 		} catch (ServletException e) {
 			Notification.show("Доступ запрещен", Type.ERROR_MESSAGE);
 		}
 	}
-	
+
+	public static void logout() {
+		try {
+			JaasAccessControl.logout();
+			Notification.show("logout");
+			Page.getCurrent().reload();
+		} catch (ServletException e) {
+			e.printStackTrace();
+		}
+	}
 }
